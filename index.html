@@ -2,19 +2,58 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>ملاحظات عامة</title>
+    <title>عرض سكريبت HTML ثابت</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="container">
-      <h1>ملاحظات عامة</h1>
-      <form>
-        <input type="text" id="note-title" placeholder="عنوان الملاحظة">
-        <textarea id="notess-body" placeholder="اكتب ملاحظتك هنا..."></textarea>
-        <button id="add-note-btn" type="submit">إضافة</button>
-      </form>
-      <ul id="notes-list"></ul>
+      <h1>حبيبي والله</h1>
+      <div id="html-preview">
+        <pre>
+         <!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width">
+    <style>
+      #toggle-btn {
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        #toggle-btn {
+          display: block;
+        }
+		#Callisto-div {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="Callisto()" id="toggle-btn">إخفاء/إظهار</button>
+    <div id="Callisto-div">
+      <ul>
+        <li><a href="#Test1">Test1</a></li>
+        <li><a href="#Test2">Test2</a></li>
+        <li><a href="#Test3">Test3</a></li>
+      </ul>
     </div>
-    <script src="app.js"></script>
+    <script>
+      var div = document.getElementById('Callisto-div');
+
+      function Callisto() {
+        if (div.style.display === 'block') {
+          div.style.display = 'none';
+        } else {
+          div.style.display = 'block';
+        }
+      }
+    </script>
+  </body>
+</html>
+        </pre>
+      </div>
+    </div>
   </body>
 </html>
