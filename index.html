@@ -1,31 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>مربع نص للأكواد</title>
-</head>
-<body>
-
-  <textarea id="code"></textarea>
-  <button id="update-btn">تحديث</button>
-
-  <script>
-    var codeTextarea = document.getElementById('code');
-    var updateBtn = document.getElementById('update-btn');
-
-    // استدعاء الكود من JSON عند تحميل الصفحة
-    var storedData = localStorage.getItem('code');
-    if (storedData) {
-      codeTextarea.value = storedData;
-    }
-
-    // تحديث الكود في JSON عند النقر على الزر "تحديث"
-    updateBtn.addEventListener('click', function() {
-      var code = codeTextarea.value;
-      localStorage.setItem('code', code);
-      alert('تم تحديث الكود بنجاح!');
-    });
-  </script>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>ملاحظات عامة</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>ملاحظات عامة</h1>
+      <form>
+        <textarea id="note" placeholder="اكتب ملاحظتك هنا..."></textarea>
+        <button id="add-note-btn" type="submit">إضافة</button>
+      </form>
+      <ul id="notes-list"></ul>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>
