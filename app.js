@@ -1,17 +1,23 @@
 const notesList = document.getElementById('notes-list');
-const noteTextarea = document.getElementById('note');
+const noteTitleInput = document.getElementById('note-title');
+const noteBodyTextarea = document.getElementById('note-body');
 const addNoteBtn = document.getElementById('add-note-btn');
 
 // إضافة ملاحظة جديدة
 function addNote() {
-  const noteText = noteTextarea.value.trim();
-  if (noteText === '') {
+  const noteTitle = noteTitleInput.value.trim();
+  const noteBody = noteBodyTextarea.value.trim();
+  if (noteTitle === '' || noteBody === '') {
     return;
   }
   const noteItem = document.createElement('li');
-  noteItem.innerText = noteText;
+  noteItem.innerHTML = `
+    <div class="note-title">${noteTitle}</div>
+    <div class="note-body">${noteBody}</div>
+  `;
   notesList.appendChild(noteItem);
-  noteTextarea.value = '';
+  noteTitleInput.value = '';
+  noteBodyTextarea.value = '';
   saveNotes();
 }
 
@@ -22,34 +28,51 @@ window.addEventListener('load', function() {
 
 // حفظ الملاحظات عند إضافة ملاحظة جديدة
 function saveNotes() {
-  const notes = Array.from(notesList.children).map((noteItem) => noteItem.innerText);
+  const notes = Array.from(notesList.children).map((noteItem) => {
+    const titleElement = noteItem.querySelector('.note-title');
+    const bodyElement = noteItem.querySelector('.note-body');
+    return {
+      title: titleElement.textContent,
+      body: bodyElement.textContent
+    };
+  });
   const json = JSON.stringify(notes);
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(xhr.responseText);
+  fetch('notes.json', {
+    method: 'PUT',
+    body: json
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('حدث خطأ أثناء الحفظ');
     }
-  };
-  xhr.open('POST', 'save-notes.php');
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(json);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 }
 
 // تحميل الملاحظات المخزنة
 function loadNotes() {
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      const notes = JSON.parse(xhr.responseText);
-      for (const note of notes) {
-        const noteItem = document.createElement('li');
-        noteItem.innerText = note;
-        notesList.appendChild(noteItem);
-      }
+  fetch('notes.json')
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('حدث خطأ أثناء التحميل');
     }
-  }
-  xhr.open('GET', 'load-notes.php');
-  xhr.send();
+    return response.json();
+  })
+  .then((notes) => {
+    for (const note of notes) {
+      const noteItem = document.createElement('li');
+      noteItem.innerHTML = `
+        <div class="note-title">${note.title}</div>
+        <div class="note-body">${note.body}</div>
+      `;
+      notesList.appendChild(noteItem);
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 }
 
 // منع الإرسال الافتراضي للنموذج
