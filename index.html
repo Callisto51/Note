@@ -3,7 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <title>عرض سكريبت HTML ثابت</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+      .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#html-preview {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: auto;
+}
+
+#html-preview pre {
+  white-space: pre-wrap;
+}
+    </style>
   </head>
   <body>
     <div class="container">
