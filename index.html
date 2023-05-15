@@ -1,42 +1,31 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>مربع نص للأكواد HTML</title>
-  <style>
-    #code {
-      width: 100%;
-      height: 300px;
-      font-size: 16px;
-      font-family: "Courier New", Courier, monospace;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    #update-btn {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
-      font-size: 18px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>مربع نص للأكواد</title>
 </head>
 <body>
+
   <textarea id="code"></textarea>
   <button id="update-btn">تحديث</button>
-  <script src="/socket.io/socket.io.js"></script>
+
   <script>
     var codeTextarea = document.getElementById('code');
     var updateBtn = document.getElementById('update-btn');
-    var socket = io();
 
+    // استدعاء الكود من JSON عند تحميل الصفحة
+    var storedData = localStorage.getItem('code');
+    if (storedData) {
+      codeTextarea.value = storedData;
+    }
+
+    // تحديث الكود في JSON عند النقر على الزر "تحديث"
     updateBtn.addEventListener('click', function() {
       var code = codeTextarea.value;
-      socket.emit('updateCode', code);
-    });
-
-    socket.on('updateCode', function(code) {
-      codeTextarea.value = code;
+      localStorage.setItem('code', code);
+      alert('تم تحديث الكود بنجاح!');
     });
   </script>
+
 </body>
 </html>
