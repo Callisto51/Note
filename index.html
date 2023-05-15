@@ -3,44 +3,45 @@
   <head>
     <meta charset="UTF-8">
     <title>عرض سكريبت HTML ثابت</title>
-    <style>
-      .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-}
+    <link rel="stylesheet" href="style.css">
+	<style>
+		.container {
+		  max-width: 800px;
+		  margin: 0 auto;
+		  padding: 20px;
+		  background-color: #f5f5f5;
+		  border-radius: 5px;
+		}
 
-h1 {
-  text-align: center;
-}
+		h1 {
+		  text-align: center;
+		}
 
-#html-preview {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: auto;
-}
+		#html-preview {
+		  margin-top: 20px;
+		  padding: 10px;
+		  border-radius: 5px;
+		  background-color: #fff;
+		  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		  overflow: auto;
+		}
 
-#html-preview pre {
-  white-space: pre-wrap;
-}
+		#html-preview pre {
+		  white-space: pre-wrap;
+		}
     </style>
   </head>
   <body>
     <div class="container">
       <h1>حبيبي والله</h1>
       <div id="html-preview">
-        <pre>
-         <!DOCTYPE html>
-<html dir="ltr" lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width">
-    <style>
+        <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html dir="ltr" lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+    &lt;style&gt;
       #toggle-btn {
         display: none;
       }
@@ -53,18 +54,18 @@ h1 {
           display: none;
         }
       }
-    </style>
-  </head>
-  <body>
-    <button onclick="Callisto()" id="toggle-btn">إخفاء/إظهار</button>
-    <div id="Callisto-div">
-      <ul>
-        <li><a href="#Test1">Test1</a></li>
-        <li><a href="#Test2">Test2</a></li>
-        <li><a href="#Test3">Test3</a></li>
-      </ul>
-    </div>
-    <script>
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;button onclick="Callisto()" id="toggle-btn"&gt;إخفاء/إظهار&lt;/button&gt;
+    &lt;div id="Callisto-div"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#Test1"&gt;Test1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#Test2"&gt;Test2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#Test3"&gt;Test3&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
       var div = document.getElementById('Callisto-div');
 
       function Callisto() {
@@ -74,10 +75,10 @@ h1 {
           div.style.display = 'block';
         }
       }
-    </script>
-  </body>
-</html>
-        </pre>
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
       </div>
     </div>
   </body>
