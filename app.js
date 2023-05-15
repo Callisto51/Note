@@ -1,6 +1,6 @@
 const notesList = document.getElementById('notes-list');
 const noteTitleInput = document.getElementById('note-title');
-const noteBodyTextarea = document.getElementById('note-body');
+const noteBodyTextarea = document.getElementById('notess-body');
 const addNoteBtn = document.getElementById('add-note-btn');
 
 // إضافة ملاحظة جديدة
